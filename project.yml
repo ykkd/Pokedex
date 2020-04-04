@@ -56,3 +56,8 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: DataStore
+  DomainTests:
+    type: bundle.unit-test
+    sources: [DomainTests]
+    platform: iOS
+    
