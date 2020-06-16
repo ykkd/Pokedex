@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PokemonPagePresenter: AnyObject {
-    func getPage(_ forward: Bool?) -> UIViewController
+    func getPage() -> UIViewController
     func changePageBackward(vc: UIViewController) -> UIViewController?
     func changePageForward(vc: UIViewController) -> UIViewController?
 }
@@ -26,7 +26,12 @@ final class PokemonPagePresenterImpl: PokemonPagePresenter {
         self.count = count
     }
 
-    func getPage(_ forward: Bool?) -> UIViewController {
+    func getPage() -> UIViewController {
+        let vc = PokemonDetailBuilder.build(number: self.number)
+        return vc
+    }
+
+    func changePage(_ forward: Bool?) -> UIViewController {
         self.number += addPageCount(forward)
         let vc = PokemonDetailBuilder.build(number: self.number)
         return vc
@@ -34,7 +39,7 @@ final class PokemonPagePresenterImpl: PokemonPagePresenter {
 
     func changePageBackward(vc: UIViewController) -> UIViewController? {
         if 0 < self.number && self.number <= count - 1 {
-            return self.getPage(false)
+            return self.changePage(false)
         }
 
         return nil
@@ -42,7 +47,7 @@ final class PokemonPagePresenterImpl: PokemonPagePresenter {
 
     func changePageForward(vc: UIViewController) -> UIViewController? {
         if 0 <= self.number && self.number < count - 1 {
-            return self.getPage(true)
+            return self.changePage(true)
         }
         return nil
     }

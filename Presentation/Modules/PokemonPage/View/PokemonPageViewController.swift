@@ -15,7 +15,7 @@ final class PokemonPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setViewControllers([self.presenter.getPage(nil)], direction: .forward, animated: true, completion: nil)
+        self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: true, completion: nil)
         self.dataSource = self
     }
 
