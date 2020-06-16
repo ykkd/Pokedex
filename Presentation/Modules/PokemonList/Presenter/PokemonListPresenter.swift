@@ -37,7 +37,6 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
     }
 
     func didSelect(_ pokemon: PokemonListModel.Pokemon, _ pokemonCount: Int) {
-        //        self.wireframe.pushPokemonDetail(number: pokemon.number)
         self.wireframe.pushPokemonPage(number: pokemon.number, count: pokemonCount)
     }
 }

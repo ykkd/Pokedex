@@ -12,12 +12,10 @@ protocol PokemonPageView: AnyObject {}
 final class PokemonPageViewController: UIPageViewController {
 
     var presenter: PokemonPagePresenter!
-    //    var page = UIViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        self.page = self.presenter.getPage()
-        self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: true, completion: nil)
+        self.setViewControllers([self.presenter.getPage(nil)], direction: .forward, animated: true, completion: nil)
         self.dataSource = self
     }
 
@@ -34,11 +32,11 @@ final class PokemonPageViewController: UIPageViewController {
 
 extension PokemonPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
+        self.presenter.changePageBackward(vc: viewController)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
+        self.presenter.changePageForward(vc: viewController)
     }
 }
 
