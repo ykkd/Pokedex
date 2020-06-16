@@ -98,6 +98,7 @@ extension PokemonListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pokemon = self.pokemons[indexPath.row]
-        self.presenter.didSelect(pokemon)
+        let pokemonCount = self.pokemons.count
+        self.presenter.didSelect(pokemon, pokemonCount)
     }
 }

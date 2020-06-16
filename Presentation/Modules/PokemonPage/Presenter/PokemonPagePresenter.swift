@@ -8,14 +8,23 @@
 import UIKit
 
 protocol PokemonPagePresenter: AnyObject {
-    func viewDidLoad()
+    func getPage() -> UIViewController
 }
 
 final class PokemonPagePresenterImpl: PokemonPagePresenter {
     weak var view: PokemonPageView?
     var wireframe: PokemonPageWireframe!
 
-    init() {}
+    private let number: Int
+    private let count: Int
 
-    func viewDidLoad() {}
+    init(number: Int, count: Int) {
+        self.number = number
+        self.count = count
+    }
+
+    func getPage() -> UIViewController {
+        let vc = PokemonDetailBuilder.build(number: self.number)
+        return vc
+    }
 }

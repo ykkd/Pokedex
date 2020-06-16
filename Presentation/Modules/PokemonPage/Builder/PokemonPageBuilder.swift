@@ -9,9 +9,9 @@ import UIKit
 
 enum PokemonPageBuilder {
 
-    static func build() -> UIPageViewController {
+    static func build(number: Int, count: Int) -> UIViewController {
         let view = PokemonPageViewController.instantiate()
-        let presenter = PokemonPagePresenterImpl()
+        let presenter = PokemonPagePresenterImpl(number: number, count: count)
         let wireframe = PokemonPageWireframeImpl()
 
         view.presenter = presenter

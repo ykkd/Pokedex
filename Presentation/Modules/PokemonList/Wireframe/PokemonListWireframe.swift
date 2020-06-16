@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol PokemonListWireframe: TransitToPokemonDetailWireframe {}
+protocol PokemonListWireframe: TransitToPokemonPageWireframe {}
 
 final class PokemonListWireframeImpl: PokemonListWireframe {
 
-    weak var viewController: UIViewController?
+    var viewController: UIViewController?
 }

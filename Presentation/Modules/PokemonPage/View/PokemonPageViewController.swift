@@ -7,15 +7,18 @@
 
 import UIKit
 
-protocol PokemonPageView: ShowErrorAlertView {}
+protocol PokemonPageView: AnyObject {}
 
 final class PokemonPageViewController: UIPageViewController {
 
     var presenter: PokemonPagePresenter!
+    //    var page = UIViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.viewDidLoad()
+        //        self.page = self.presenter.getPage()
+        self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: true, completion: nil)
+        self.dataSource = self
     }
 
     override func viewWillAppear(_ animated: Bool) {

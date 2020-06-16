@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PokemonPageWireframe {}
+protocol PokemonPageWireframe: TransitToPokemonDetailWireframe {}
 
 final class PokemonPageWireframeImpl: PokemonPageWireframe {
 
