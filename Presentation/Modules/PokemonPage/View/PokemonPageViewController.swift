@@ -18,13 +18,19 @@ final class PokemonPageViewController: UIPageViewController {
 extension PokemonPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: true, completion: nil)
+
+        self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: false, completion: nil)
         self.dataSource = self
+        self.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+
+        self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: false, completion: nil)
+        self.dataSource = nil
+        self.dataSource = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,13 +42,24 @@ extension PokemonPageViewController {
 // MARK: - UIPageViewControllerDataSource
 extension PokemonPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print("backword")
         return self.presenter.changePageBackward(vc: viewController)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        print("forward")
         return self.presenter.changePageForward(vc: viewController)
+    }
+}
+
+// MARK: - UIPageViewControllerDelegate
+extension PokemonPageViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo: [UIViewController]) {
+        print("pokemonNumberBeforeTransition")
+        print(self.presenter.returnCurrentNumber())
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating: Bool, previousViewControllers: [UIViewController], transitionCompleted: Bool) {
+        print("pokemonNumberAfterTransition")
+        print(self.presenter.returnCurrentNumber())
     }
 }
 

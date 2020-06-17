@@ -11,6 +11,7 @@ protocol PokemonPagePresenter: AnyObject {
     func getPage() -> UIViewController
     func changePageBackward(vc: UIViewController) -> UIViewController?
     func changePageForward(vc: UIViewController) -> UIViewController?
+    func returnCurrentNumber() -> Int
 }
 
 final class PokemonPagePresenterImpl: PokemonPagePresenter {
@@ -32,9 +33,10 @@ final class PokemonPagePresenterImpl: PokemonPagePresenter {
     }
 
     func changePageBackward(vc: UIViewController) -> UIViewController? {
+
         if 1 < self.number && self.number <= count - 1 {
-            let vc = PokemonDetailBuilder.build(number: self.number - 1)
             self.number -= 1
+            let vc = PokemonDetailBuilder.build(number: self.number)
             return vc
         }
         return nil
@@ -42,11 +44,15 @@ final class PokemonPagePresenterImpl: PokemonPagePresenter {
 
     func changePageForward(vc: UIViewController) -> UIViewController? {
         if 1 <= self.number && self.number < count - 1 {
-            let vc = PokemonDetailBuilder.build(number: self.number + 1)
             self.number += 1
+            let vc = PokemonDetailBuilder.build(number: self.number)
             return vc
         }
         return nil
+    }
+
+    func returnCurrentNumber() -> Int {
+        return self.number
     }
 }
 
