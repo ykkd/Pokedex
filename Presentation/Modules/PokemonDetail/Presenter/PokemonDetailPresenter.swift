@@ -10,6 +10,7 @@ import Domain
 import Foundation
 
 protocol PokemonDetailPresenter: AnyObject {
+    var number:Int { get }
     func viewDidLoad()
     func didSelectPop()
 }
@@ -20,7 +21,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     var wireframe: PokemonDetailWireframe!
     var pokemonDetailUseCase: PokemonDetailUseCase!
 
-    private let number: Int
+    var number: Int
 
     init(number: Int) {
         self.number = number
