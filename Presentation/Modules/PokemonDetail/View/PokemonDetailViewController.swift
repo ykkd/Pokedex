@@ -11,6 +11,8 @@ import UIKit
 
 protocol PokemonDetailView: ShowErrorAlertView {
     func showPokemonDetailModel(_ model: PokemonDetailModel)
+
+    func showDegeneration(_ isHidden: Bool)
 }
 
 // MARK: - vars
@@ -36,6 +38,9 @@ final class PokemonDetailViewController: UIViewController {
     @IBOutlet private weak var contentsStackView: UIStackView!
 
     @IBOutlet private weak var pageControl: UIPageControl!
+
+    @IBOutlet private weak var degenerationButton: UIButton!
+
 }
 
 // MARK: - Life cycle
@@ -71,6 +76,10 @@ extension PokemonDetailViewController: PokemonDetailView {
 
         self.pageControl.numberOfPages = self.contentsStackView.arrangedSubviews.count
     }
+
+    func showDegeneration(_ isHidden: Bool) {
+        self.degenerationButton.isHidden = isHidden
+    }
 }
 
 // MARK: - IBAction
@@ -78,6 +87,10 @@ extension PokemonDetailViewController {
 
     @IBAction private func didTapPopButton() {
         self.presenter.didSelectPop()
+    }
+
+    @IBAction private func didTapDegenerationButton() {
+        self.presenter.didSelectDegeneration()
     }
 }
 
