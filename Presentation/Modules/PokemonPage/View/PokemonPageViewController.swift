@@ -9,10 +9,13 @@ import UIKit
 
 protocol PokemonPageView: AnyObject {}
 
+// MARK: - vars
 final class PokemonPageViewController: UIPageViewController {
-
     var presenter: PokemonPagePresenter!
+}
 
+// MARK: - Life cycle
+extension PokemonPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllers([self.presenter.getPage()], direction: .forward, animated: true, completion: nil)
@@ -30,14 +33,18 @@ final class PokemonPageViewController: UIPageViewController {
     }
 }
 
+// MARK: - UIPageViewControllerDataSource
 extension PokemonPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        self.presenter.changePageBackward(vc: viewController)
+        print("backword")
+        return self.presenter.changePageBackward(vc: viewController)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        self.presenter.changePageForward(vc: viewController)
+        print("forward")
+        return self.presenter.changePageForward(vc: viewController)
     }
 }
 
+// MARK: - PokemonPageView
 extension PokemonPageViewController: PokemonPageView {}

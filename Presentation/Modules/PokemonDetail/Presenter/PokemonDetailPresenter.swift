@@ -11,7 +11,6 @@ import Foundation
 
 protocol PokemonDetailPresenter: AnyObject {
     func viewDidLoad()
-
     func didSelectPop()
 }
 
