@@ -57,7 +57,7 @@ extension PokemonPageViewController: UIPageViewControllerDelegate {
 
         guard completed else { return }
         if
-            let viewController = self.viewControllers?.first as? PokemonDetailViewController,
+            let viewController = self.viewControllers?.first as? PokemonDetailViewController
         {
             self.presenter.updateNumber(from: viewController.presenter.number)
         }
