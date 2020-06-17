@@ -52,19 +52,12 @@ extension PokemonPageViewController: UIPageViewControllerDataSource {
 
 // MARK: - UIPageViewControllerDelegate
 extension PokemonPageViewController: UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo: [UIViewController]) {
-        print("pokemonNumberBeforeTransition")
-        print(self.presenter.returnCurrentNumber())
-    }
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        print("pokemonNumberAfterTransition")
-        print(self.presenter.returnCurrentNumber())
 
         guard completed else { return }
         if
             let viewController = self.viewControllers?.first as? PokemonDetailViewController,
-            let previousViewController = previousViewControllers.first as? PokemonDetailViewController
         {
             self.presenter.updateNumber(from: viewController.presenter.number)
         }
