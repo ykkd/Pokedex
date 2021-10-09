@@ -1,6 +1,6 @@
 PRODUCT_NAME := Pokedex
 SCHEME_NAME := ${PRODUCT_NAME}
-PROJECT_NAME := ${PRODUCT_NAME}.xcodeproj
+PROJECT_NAME := ${PRODUCT_NAME}.xcworkspace
 UI_TESTS_TARGET_NAME := ${PRODUCT_NAME}UITests
 
 TEST_SDK := iphonesimulator
@@ -15,6 +15,7 @@ bootstrap:
 	brew update
 	brew install mint
 	mint bootstrap
+	bundle install
 
 .PHONY: update-tools
 update-tools:
@@ -27,6 +28,7 @@ project:
 	mint run mono0926/LicensePlist license-plist --output-path ${PRODUCT_NAME}/Resource/Lisence/Settings.bundle
 	mint run SwiftGen/SwiftGen swiftgen
 	mint run yonaskolb/XcodeGen xcodegen generate
+	bundle exec pod install && mint run rugby
 
 .PHONY: open
 open:
