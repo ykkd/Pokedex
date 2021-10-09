@@ -1,14 +1,26 @@
 name: Pokedex
 configs:
-  Debug: debug
-  Adhoc: debug
+  Debug_Future: debug
+  Debug_Kakin: debug
+  Debug_Release: debug
+  Debug_Staging: debug
+  Deploy_Future: debug
+  Deploy_Kakin: debug
+  Deploy_Staging: debug
+  Dummy: debug
   Release: release
 configFiles:
-  Debug: Configs/Debug.xcconfig
-  Adhoc: Configs/Adhoc.xcconfig
+  Debug_Future: Configs/Debug_Future.xcconfig
+  Debug_Kakin: Configs/Debug_Kakin.xcconfig
+  Debug_Release: Configs/Debug_Release.xcconfig
+  Debug_Staging: Configs/Debug_Staging.xcconfig
+  Deploy_Future: Configs/Deploy_Future.xcconfig
+  Deploy_Kakin: Configs/Deploy_Kakin.xcconfig
+  Deploy_Staging: Configs/Deploy_Staging.xcconfig
+  Dummy: Configs/Dummy.xcconfig
   Release: Configs/Release.xcconfig
 options:
-  defaultConfig: Debug
+  defaultConfig: Debug_Staging
   deploymentTarget:
     iOS: 13.0
 settingGroups:
@@ -33,12 +45,42 @@ targets:
     settings:
       groups: [MainSettings]
       configs:
-        Debug:
+        Debug_Staging:
           CODE_SIGN_IDENTITY: Apple Development
           DEVELOPMENT_TEAM: NG4PAUE398
           PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
           DEBUG_INFORMATION_FORMAT: dwarf
-        Adhoc:
+        Debug_Future:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Debug_Kakin:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Deploy_Staging:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Deploy_Future:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Deploy_Kakin:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Debug_Release:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Dummy:
           CODE_SIGN_IDENTITY: Apple Distribution
           DEVELOPMENT_TEAM: NG4PAUE398
           PROVISIONING_PROFILE_SPECIFIER: Pokedex.Adhoc
@@ -114,12 +156,42 @@ targets:
       PRODUCT_NAME: Who is That Pokémon?
       CODE_SIGN_STYLE: Manual
       configs:
-        Debug:
+        Debug_Staging:
           CODE_SIGN_IDENTITY: Apple Development
           PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Debug.QuizTodayExtension
           DEVELOPMENT_TEAM: NG4PAUE398
           PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Debug
-        Adhoc:
+        Debug_Future:
+          CODE_SIGN_IDENTITY: Apple Development
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Debug.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Debug
+        Debug_Kakin:
+          CODE_SIGN_IDENTITY: Apple Development
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Debug.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Debug
+        Deploy_Staging:
+          CODE_SIGN_IDENTITY: Apple Distribution
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Adhoc.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Adhoc
+        Deploy_Future:
+          CODE_SIGN_IDENTITY: Apple Distribution
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Adhoc.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Adhoc
+        Deploy_Kakin:
+          CODE_SIGN_IDENTITY: Apple Distribution
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Adhoc.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Adhoc
+        Debug_Release:
+          CODE_SIGN_IDENTITY: Apple Development
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Debug.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Debug
+        Dummy:
           CODE_SIGN_IDENTITY: Apple Distribution
           PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Adhoc.QuizTodayExtension
           DEVELOPMENT_TEAM: NG4PAUE398
@@ -150,9 +222,9 @@ schemes:
         Pokedex: all
         PokedexTests: [test]
     run:
-      config: Debug
+      config: Debug_Staging
     test:
-      config: Debug
+      config: Debug_Staging
       targets:
         - PokedexTests
       gatherCoverageData: true
@@ -163,6 +235,6 @@ schemes:
     profile:
       config: Release
     analyze:
-      config: Debug
+      config: Debug_Staging
     archive:
       config: Release
