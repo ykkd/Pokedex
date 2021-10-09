@@ -22,6 +22,8 @@ DerivedData
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 
+# Bundler
+vendor/bundle
 
 # CocoaPod
 Pods/*
@@ -29,6 +31,9 @@ Podfile.lock
 
 # Carthage
 Carthage/Build
+
+# Rugby
+.rugby/
 
 # others
 *.swp
