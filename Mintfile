@@ -1,5 +1,5 @@
-yonaskolb/xcodegen@2.25.0
-realm/SwiftLint@0.45.1
-SwiftGen/SwiftGen@6.5.1
-mono0926/LicensePlist@3.16.0
-uber/mockolo@1.6.3
+yonaskolb/xcodegen@2.39.1
+realm/SwiftLint@0.54.0
+SwiftGen/SwiftGen@6.6.3
+mono0926/LicensePlist@3.25.1
+uber/mockolo@2.0.1
