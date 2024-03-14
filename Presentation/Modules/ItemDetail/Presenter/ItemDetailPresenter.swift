@@ -32,7 +32,7 @@ final class ItemDetailPresenterImpl: ItemDetailPresenter {
     }
 
     private func requestItemDetailModel() {
-        Task {
+        Task { @MainActor in
             do {
                 let model = try await self.itemDetailUseCase.get(number: self.number)
                 self.view?.showItemDetailModel(model)

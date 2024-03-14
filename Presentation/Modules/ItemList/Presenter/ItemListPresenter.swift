@@ -25,7 +25,7 @@ final class ItemListPresenterImpl: ItemListPresenter {
     }
 
     private func requestItemListModel() {
-        Task {
+        Task { @MainActor in
             do {
                 let model = try await self.itemListUseCase.get()
                 self.view?.showItemListModel(model)
